@@ -33,7 +33,7 @@ public class TweakBlockHardness {
 			}
 
 			try {
-				hardness = Float.valueOf(parts[1]);
+				hardness = Float.parseFloat(parts[1]);
 			} catch (NumberFormatException e) {
 				continue;
 			}

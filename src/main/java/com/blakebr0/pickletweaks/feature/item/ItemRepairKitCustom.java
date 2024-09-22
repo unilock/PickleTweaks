@@ -10,6 +10,7 @@ import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairHelper;
 import com.blakebr0.pickletweaks.registry.ModItems;
@@ -72,7 +73,7 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 			int color;
 
 			try {
-				meta = Integer.valueOf(parts[0]);
+				meta = Integer.parseInt(parts[0]);
 				color = Integer.parseInt(info[1], 16);
 			} catch (NumberFormatException e) {
 				PickleTweaks.LOGGER.error("Invalid custom repair kit syntax ints: " + value);
@@ -88,7 +89,7 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 				int matMeta = 0;
 				if (matParts.length == 3) {
 					try {
-						matMeta = Integer.valueOf(matParts[2]);
+						matMeta = Integer.parseInt(matParts[2]);
 					} catch (NumberFormatException e) {
 						PickleTweaks.LOGGER.error("Invalid custom repair kit repair material meta: " + value);
 						continue;
@@ -111,10 +112,10 @@ public class ItemRepairKitCustom extends ItemMeta implements IEnableable {
 	@Override
 	public void initModels() {
 		if (kits.isEmpty()) {
-			ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(PickleTweaks.MOD_ID + ":repair_kit", "inventory"));
+			ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(Tags.MOD_ID + ":repair_kit", "inventory"));
 		} else {
 			for (Map.Entry<Integer, MetaItem> item : items.entrySet()) {
-				ModelLoader.setCustomModelResourceLocation(this, item.getKey(), new ModelResourceLocation(PickleTweaks.MOD_ID + ":repair_kit", "inventory"));
+				ModelLoader.setCustomModelResourceLocation(this, item.getKey(), new ModelResourceLocation(Tags.MOD_ID + ":repair_kit", "inventory"));
 			}
 		}
 	}

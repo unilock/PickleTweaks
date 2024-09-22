@@ -4,6 +4,7 @@ import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.iface.IModelHelper;
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.registry.ModBlocks;
 import net.minecraft.block.BlockColored;
@@ -21,7 +22,7 @@ public class BlockColoredCobblestone extends BlockColored implements IEnableable
 
 	public BlockColoredCobblestone() {
 		super(Material.ROCK);
-		this.setUnlocalizedName("pt.colored_cobblestone");
+		this.setRegistryName("pt.colored_cobblestone");
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setSoundType(SoundType.STONE);
 		this.setHardness(2.0F);
@@ -31,7 +32,7 @@ public class BlockColoredCobblestone extends BlockColored implements IEnableable
 	@Override
 	public void initModels() {
 		for (EnumDyeColor color : COLOR.getAllowedValues()) { 
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), color.getMetadata(), ResourceHelper.getModelResource(PickleTweaks.MOD_ID, "colored_cobblestone", "inventory"));
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), color.getMetadata(), ResourceHelper.getModelResource(Tags.MOD_ID, "colored_cobblestone", "inventory"));
 		}
 	}
 

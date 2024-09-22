@@ -28,7 +28,7 @@ public class TweakStackSize {
 			int size;
 
 			try {
-				size = Integer.valueOf(parts[1]);
+				size = Integer.parseInt(parts[1]);
 			} catch (NumberFormatException e) {
 				continue;
 			}

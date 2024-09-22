@@ -61,7 +61,7 @@ public class TweakToolBreaking {
 			int threshold;
 
 			try {
-				threshold = Integer.valueOf(parts[1]);
+				threshold = Integer.parseInt(parts[1]);
 			} catch (NumberFormatException e) {
 				PickleTweaks.LOGGER.error("Invalid tool breaking threshold value: " + value);
 				continue;
@@ -197,11 +197,7 @@ public class TweakToolBreaking {
 		if (stack.isItemStackDamageable()) {
 			int unbreaking = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack);
 			if (isBroken(stack, (unbreaking > 0 ? 1 : 0))) {
-				if (overrides.containsKey(stack.getItem())) {
-					stack.setItemDamage(stack.getMaxDamage() - overrides.get(stack.getItem()));
-				} else {
-					stack.setItemDamage(stack.getMaxDamage() - 1);
-				}
+                stack.setItemDamage(stack.getMaxDamage() - overrides.getOrDefault(stack.getItem(), 1));
 				event.setAmount(0.5F);
 			}
 		}

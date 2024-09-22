@@ -6,7 +6,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
-import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.block.Block;
@@ -36,7 +36,7 @@ public class FeatureHoeInfo {
 		Block block = event.getWorld().getBlockState(event.getPos()).getBlock();
 
 		if (event.getResult() == Result.ALLOW || block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.GRASS_PATH) {
-			NBTTagCompound tag = event.getCurrent().getOrCreateSubCompound(PickleTweaks.MOD_ID);
+			NBTTagCompound tag = event.getCurrent().getOrCreateSubCompound(Tags.MOD_ID);
 			tag.setInteger("BlocksTilled", tag.getInteger("BlocksTilled") + 1);
 		}
 	}
@@ -78,7 +78,7 @@ public class FeatureHoeInfo {
 	}
 
 	public int getBlocksTilled(ItemStack stack) {
-		NBTTagCompound tag = stack.getSubCompound(PickleTweaks.MOD_ID);
+		NBTTagCompound tag = stack.getSubCompound(Tags.MOD_ID);
 		if (tag != null && tag.hasKey("BlocksTilled")) {
 			return tag.getInteger("BlocksTilled");
 		}

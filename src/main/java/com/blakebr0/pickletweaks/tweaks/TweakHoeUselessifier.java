@@ -92,7 +92,7 @@ public class TweakHoeUselessifier {
 
 		ItemStack stack = event.getCurrent();
 
-		if (stack == null) {
+		if (stack.isEmpty()) {
 			return;
 		}
 

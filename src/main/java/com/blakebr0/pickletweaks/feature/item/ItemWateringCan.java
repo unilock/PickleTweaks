@@ -86,15 +86,15 @@ public class ItemWateringCan extends ItemBase implements IEnableable {
 
 		RayTraceResult raytraceresult = this.rayTrace(world, player, true);
 		if (raytraceresult == null) {
-			return new ActionResult(EnumActionResult.FAIL, stack);
+			return new ActionResult<>(EnumActionResult.FAIL, stack);
 		}
 
 		if (world.getBlockState(raytraceresult.getBlockPos()).getMaterial() == Material.WATER && ((Integer) world.getBlockState(raytraceresult.getBlockPos()).getValue(BlockLiquid.LEVEL)).intValue() == 0) {
 			initTags(stack);
 			stack.getTagCompound().setBoolean("Water", true);
-			return new ActionResult(EnumActionResult.FAIL, stack);
+			return new ActionResult<>(EnumActionResult.FAIL, stack);
 		}
-		return new ActionResult(EnumActionResult.FAIL, stack);
+		return new ActionResult<>(EnumActionResult.FAIL, stack);
 	}
 
 	@Override
@@ -118,9 +118,9 @@ public class ItemWateringCan extends ItemBase implements IEnableable {
 		for (BlockPos aoePos : blocks) {
 			IBlockState aoeState = world.getBlockState(aoePos);
 			if (aoeState.getBlock() instanceof BlockFarmland) {
-				int moisture = ((Integer) aoeState.getValue(BlockFarmland.MOISTURE)).intValue();
+				int moisture = aoeState.getValue(BlockFarmland.MOISTURE);
 				if (moisture < 7) {
-					world.setBlockState(aoePos, aoeState.withProperty(BlockFarmland.MOISTURE, Integer.valueOf(7)), 2);
+					world.setBlockState(aoePos, aoeState.withProperty(BlockFarmland.MOISTURE, 7), 2);
 				}
 			}
 		}

@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.blakebr0.cucumber.helper.RecipeHelper;
-import com.blakebr0.cucumber.helper.StackHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairHelper;
 import com.blakebr0.pickletweaks.registry.ModItems;
@@ -63,7 +63,7 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 	@Override
 	public void initModels() {
 		for (Map.Entry<Integer, MetaItem> item : items.entrySet()) {
-			ModelLoader.setCustomModelResourceLocation(this, item.getKey(), new ModelResourceLocation(PickleTweaks.MOD_ID + ":repair_kit", "inventory"));
+			ModelLoader.setCustomModelResourceLocation(this, item.getKey(), new ModelResourceLocation(Tags.MOD_ID + ":repair_kit", "inventory"));
 		}
 	}
 	
@@ -75,12 +75,12 @@ public class ItemRepairKit extends ItemMeta implements IEnableable {
 			if (rep instanceof ItemStack) {
 				ItemStack stack = (ItemStack) rep;
 				if (!stack.isEmpty()) {
-					RecipeHelper.addShapedRecipe(new ItemStack(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', stack, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+					RecipeHelper.addShapedRecipe(new ItemStack(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', stack, 'H', new ItemStack(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
 				}
 			} else if (rep instanceof String) {
 				String ore = (String) rep;
 				if (OreDictionary.doesOreNameExist(ore)) {
-					RecipeHelper.addShapedRecipe(new ItemStack(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', ore, 'H', StackHelper.to(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
+					RecipeHelper.addShapedRecipe(new ItemStack(ModItems.itemRepairKit, 2, kit.getKey()), "SMS", "MHM", "SMS", 'S', "stickWood", 'M', ore, 'H', new ItemStack(ModItems.itemHammer, 1, OreDictionary.WILDCARD_VALUE));
 				}
 			}
 		}

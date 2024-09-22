@@ -33,7 +33,7 @@ public class TweakBlockResistance {
 			}
 
 			try {
-				resistance = Float.valueOf(parts[1]);
+				resistance = Float.parseFloat(parts[1]);
 			} catch (NumberFormatException e) {
 				continue;
 			}

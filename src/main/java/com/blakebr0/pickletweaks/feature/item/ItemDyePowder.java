@@ -68,7 +68,7 @@ public class ItemDyePowder extends ItemMeta implements IEnableable {
         };
         
 		for (EnumDyeColor color : EnumDyeColor.values()) {
-			String name = color.getUnlocalizedName();
+			String name = color.getTranslationKey();
 			addItem(color.getMetadata(), name, "dye" + dyes[color.getDyeDamage()]);
 		}
 	}

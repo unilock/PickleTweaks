@@ -2,6 +2,7 @@ package com.blakebr0.pickletweaks.feature;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -21,8 +22,8 @@ import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 public class FeatureRightClickHarvest {
 
@@ -30,7 +31,7 @@ public class FeatureRightClickHarvest {
 	private static final Method GET_SEED;
 
 	static {
-		GET_SEED = ReflectionHelper.findMethod(BlockCrops.class, "getSeed", "func_149866_i");
+		GET_SEED = ObfuscationReflectionHelper.findMethod(BlockCrops.class, "func_149866_i", Item.class);
 	}
 	
 	public static void configure(Configuration config) {
@@ -39,9 +40,7 @@ public class FeatureRightClickHarvest {
 		category.get("right_click_harvest_blacklist").setComment("Here you can blacklist crops from being right-click-harvestable."
 				+ "\nSyntax: modid:blockid");
 
-		for (String value : values) {
-			BLACKLIST.add(value);
-		}
+        BLACKLIST.addAll(Arrays.asList(values));
 	}
 
 	@SubscribeEvent

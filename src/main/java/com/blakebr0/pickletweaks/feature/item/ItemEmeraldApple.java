@@ -21,7 +21,7 @@ public class ItemEmeraldApple extends ItemFood implements IEnableable {
 
 	public ItemEmeraldApple() {
 		super(10, 2.0F, false);
-		this.setUnlocalizedName("pt.emerald_apple");
+		this.setRegistryName("pt.emerald_apple");
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setAlwaysEdible();
 	}

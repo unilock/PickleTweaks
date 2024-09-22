@@ -34,7 +34,7 @@ public class TweakFlintDrop {
 		int meta;
 
 		try {
-			meta = Integer.valueOf(parts[2]);
+			meta = Integer.parseInt(parts[2]);
 		} catch (NumberFormatException e) {
 			return;
 		}

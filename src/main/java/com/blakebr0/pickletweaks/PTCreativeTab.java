@@ -13,11 +13,11 @@ public class PTCreativeTab extends CreativeTabs {
 	}
 
 	@Override
-	public ItemStack getTabIconItem() {
+	public ItemStack createIcon() {
 		if (ModItems.itemWateringCan.isEnabled()) {
 			return new ItemStack(ModItems.itemWateringCan);
 		}
-		
+
 		return new ItemStack(Items.DIAMOND);
 	}
 }

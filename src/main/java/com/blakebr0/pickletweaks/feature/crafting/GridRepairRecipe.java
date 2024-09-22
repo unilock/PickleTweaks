@@ -1,6 +1,6 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
-import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKit;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
@@ -17,7 +17,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry.Impl;
 public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 	
 	public GridRepairRecipe() {
-		this.setRegistryName(PickleTweaks.MOD_ID, "grid_repair");
+		this.setRegistryName(Tags.MOD_ID, "grid_repair");
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		
 		ItemStack tool = ItemStack.EMPTY;
 		boolean foundTool = false;
-		NonNullList<ItemStack> inputs = NonNullList.<ItemStack>create();
+		NonNullList<ItemStack> inputs = NonNullList.create();
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack slotStack = inv.getStackInSlot(i);
 			
@@ -53,7 +53,6 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 			if (!foundTool && newSlotStack.isItemStackDamageable()) {
 				tool = newSlotStack;
 				foundTool = true;
-				continue;
 			} else {
 				inputs.add(newSlotStack);
 			}
@@ -86,7 +85,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		int repairCost = ModConfig.confRepairCost;
 		
 		if (ModConfig.confCheaperShovel && tool.getItem() instanceof ItemSpade) {
-			repairCost = (int) Math.max(1, repairCost / 2);
+			repairCost = Math.max(1, repairCost / 2);
 		}
 		
 		int damage = tool.getMaxDamage() / repairCost;
@@ -144,7 +143,7 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 
 	@Override
 	public boolean canFit(int width, int height) {
-		return ModConfig.confRequires3x3 ? (width >= 3 && height >= 3) : true;
+		return !ModConfig.confRequires3x3 || (width >= 3 && height >= 3);
 	}
 
 	@Override
@@ -152,8 +151,8 @@ public class GridRepairRecipe extends Impl<IRecipe> implements IRecipe {
 		return ItemStack.EMPTY;
 	}
 	
-	@Override
-	public boolean isHidden() {
-		return true;
-	}
+//	@Override
+//	public boolean isHidden() {
+//		return true;
+//	}
 }

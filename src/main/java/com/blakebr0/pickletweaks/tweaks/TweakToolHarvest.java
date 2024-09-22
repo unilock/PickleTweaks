@@ -32,7 +32,7 @@ public class TweakToolHarvest {
 			String tool = part[1];
 
 			try {
-				level = Integer.valueOf(part[0]);
+				level = Integer.parseInt(part[0]);
 			} catch (NumberFormatException e) {
 				continue;
 			}

@@ -68,7 +68,7 @@ public class ItemMagnet extends ItemBase implements IEnableable {
 					if (item.isDead || NBTHelper.getBoolean(stack, "PreventRemoteMovement"))
 						continue;
 
-					if (item.getThrower() != null && item.getThrower().equals(entity.getName()) && item.delayBeforeCanPickup > 0)
+					if (item.getThrower() != null && item.getThrower().equals(entity.getName()) && item.pickupDelay > 0)
 						continue;
 
 					if (!world.isRemote) {

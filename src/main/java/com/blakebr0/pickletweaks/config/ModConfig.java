@@ -5,15 +5,12 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairBlacklist;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride;
-import com.blakebr0.pickletweaks.feature.item.ItemReinforcement;
 import com.blakebr0.pickletweaks.feature.item.ItemRepairKitCustom;
-import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementBlacklist;
-import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementOverride;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHardness;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockHarvest;
 import com.blakebr0.pickletweaks.tweaks.TweakBlockResistance;
@@ -59,9 +56,9 @@ public class ModConfig {
 	public static boolean confFlintDrop;
 	public static boolean confBrokenTools;
 
-	public static Set<String> confUselessTools = new HashSet<String>();
-	public static Set<String> confUselessHoes = new HashSet<String>();
-	public static Set<String> confUselessWeapons = new HashSet<String>();
+	public static Set<String> confUselessTools = new HashSet<>();
+	public static Set<String> confUselessHoes = new HashSet<>();
+	public static Set<String> confUselessWeapons = new HashSet<>();
 
 	public static boolean confGridRepair;
 	public static int confRepairCost;
@@ -84,7 +81,7 @@ public class ModConfig {
 
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-		if (event.getModID().equals(PickleTweaks.MOD_ID)) {
+		if (event.getModID().equals(Tags.MOD_ID)) {
 			ModConfig.preInit();
 			ModConfig.postInit();
 		}

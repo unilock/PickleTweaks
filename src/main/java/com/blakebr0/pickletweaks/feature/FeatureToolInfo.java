@@ -8,10 +8,9 @@ import org.lwjgl.input.Keyboard;
 
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
-import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -27,7 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class FeatureToolInfo {
 
 	public static final String[] DEFAULT_VALUES = new String[] { "0=Stone", "1=Iron", "2=Diamond", "3=Obsidian" };
-	public static Map<Integer, String> names = new HashMap<Integer, String>();
+	public static Map<Integer, String> names = new HashMap<>();
 
 	public static void configure(Configuration config) {
 		ConfigCategory category = config.getCategory("features");
@@ -48,7 +47,7 @@ public class FeatureToolInfo {
 			String name = parts[1];
 
 			try {
-				level = Integer.valueOf(parts[0]);
+				level = Integer.parseInt(parts[0]);
 			} catch (NumberFormatException e) {
 				continue;
 			}
@@ -70,7 +69,7 @@ public class FeatureToolInfo {
 		ItemStack stack = event.getPlayer().getHeldItemMainhand();
 
 		if (!stack.isEmpty() && stack.getItem() instanceof ItemTool) {
-			NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
+			NBTTagCompound tag = stack.getOrCreateSubCompound(Tags.MOD_ID);
 			tag.setInteger("BlocksBroken", tag.getInteger("BlocksBroken") + 1);
 		}
 	}
@@ -112,7 +111,7 @@ public class FeatureToolInfo {
 	public String getMiningLevelName(ItemStack stack, String toolClass) {
 		ItemTool tool = (ItemTool) stack.getItem();
 		int level;
-		if (toolClass.equals("")) {
+		if (toolClass.isEmpty()) {
 			if (getToolMaterial(tool) != null) {
 				level = getToolMaterial(tool).getHarvestLevel();
 				if (names.containsKey(level)) {
@@ -141,7 +140,7 @@ public class FeatureToolInfo {
 			return -1;
 		}
 		
-		return mat.getEfficiencyOnProperMaterial();
+		return mat.getEfficiency();
 	}
 
 	public String getDurability(ItemStack stack) {
@@ -154,7 +153,7 @@ public class FeatureToolInfo {
 	}
 
 	public int getBlocksBroken(ItemStack stack) {
-		NBTTagCompound tag = stack.getSubCompound(PickleTweaks.MOD_ID);
+		NBTTagCompound tag = stack.getSubCompound(Tags.MOD_ID);
 		if (tag != null && tag.hasKey("BlocksBroken")) {
 			return tag.getInteger("BlocksBroken");
 		}

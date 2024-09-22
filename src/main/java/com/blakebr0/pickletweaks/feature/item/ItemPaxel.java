@@ -22,7 +22,7 @@ public class ItemPaxel extends ItemTool implements IRepairMaterial, IEnableable 
 
 	public ItemPaxel(String name, ToolMaterial material) {
 		super(4, -3.2F, material, new HashSet<>());
-		this.setUnlocalizedName("pt." + name);
+		this.setRegistryName("pt." + name);
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setHarvestLevel("pickaxe", material.getHarvestLevel());
 		this.setHarvestLevel("shovel", material.getHarvestLevel());
@@ -36,12 +36,12 @@ public class ItemPaxel extends ItemTool implements IRepairMaterial, IEnableable 
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack stack, IBlockState state) {
+	public float getDestroySpeed(ItemStack stack, IBlockState state) {
 		Material material = state.getMaterial();
 		return material != Material.IRON && material != Material.ANVIL && material != Material.ROCK
 				&& material != Material.WOOD && material != Material.PLANTS && material != Material.VINE
-						? super.getStrVsBlock(stack, state)
-						: this.efficiencyOnProperMaterial;
+				? super.getDestroySpeed(stack, state)
+				: this.efficiency;
 	}
 
 	@Override

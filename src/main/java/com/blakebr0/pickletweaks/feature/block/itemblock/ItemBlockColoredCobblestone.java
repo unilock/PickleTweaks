@@ -13,8 +13,8 @@ public class ItemBlockColoredCobblestone extends ItemBlock {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName(stack) + "_" + EnumDyeColor.byMetadata(stack.getMetadata()).getUnlocalizedName();
+	public String getTranslationKey(ItemStack stack) {
+		return super.getTranslationKey(stack) + "_" + EnumDyeColor.byMetadata(stack.getMetadata()).getTranslationKey();
 	}
 	
 	@Override

@@ -14,7 +14,7 @@ public class ItemModHoe extends ItemHoe implements IRepairMaterial {
 	
 	public ItemModHoe(String name, ToolMaterial material) {
 		super(material);
-		this.setUnlocalizedName("pt." + name);
+		this.setRegistryName("pt." + name);
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 	

@@ -1,10 +1,6 @@
 package com.blakebr0.pickletweaks.feature.reinforcement;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverride.Override;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,7 +8,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class ReinforcementOverride {
 	
@@ -36,7 +31,7 @@ public class ReinforcementOverride {
 			int val;
 			
 			try {
-				val = Integer.valueOf(parts[1]);
+				val = Integer.parseInt(parts[1]);
 			} catch (NumberFormatException e) {
 				PickleTweaks.LOGGER.error("Invalid reinforcement value: {}", value);
 				continue;
@@ -46,7 +41,7 @@ public class ReinforcementOverride {
 			if (matName.length == 3) {
 				int meta;
 				try {
-					meta = Integer.valueOf(matName[2]);
+					meta = Integer.parseInt(matName[2]);
 				} catch (NumberFormatException e) {
 					PickleTweaks.LOGGER.error("Invalid reinforcement material syntax metadata: {}", value);
 					continue;

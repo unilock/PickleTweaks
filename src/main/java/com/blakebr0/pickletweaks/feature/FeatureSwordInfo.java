@@ -6,7 +6,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.util.Utils;
-import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 
 import net.minecraft.entity.Entity;
@@ -38,7 +38,7 @@ public class FeatureSwordInfo {
 			EntityPlayer player = (EntityPlayer) entity;
 			ItemStack stack = player.getHeldItemMainhand();
 			if (!stack.isEmpty() && stack.getItem() instanceof ItemSword) {
-				NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
+				NBTTagCompound tag = stack.getOrCreateSubCompound(Tags.MOD_ID);
 				tag.setInteger("EnemiesKilled", tag.getInteger("EnemiesKilled") + 1);
 			}
 		}
@@ -57,7 +57,7 @@ public class FeatureSwordInfo {
 			EntityPlayer player = (EntityPlayer) entity;
 			ItemStack stack = player.getHeldItemMainhand();
 			if (!stack.isEmpty() && stack.getItem() instanceof ItemSword) {
-				NBTTagCompound tag = stack.getOrCreateSubCompound(PickleTweaks.MOD_ID);
+				NBTTagCompound tag = stack.getOrCreateSubCompound(Tags.MOD_ID);
 				if (stack.getItemDamage() < stack.getMaxDamage() - 1) {
 					EntityLivingBase living = event.getEntityLiving();
 					if (living.getHealth() < event.getAmount()) {
@@ -109,7 +109,7 @@ public class FeatureSwordInfo {
 	}
 
 	public int getEnemiesKilled(ItemStack stack) {
-		NBTTagCompound tag = stack.getSubCompound(PickleTweaks.MOD_ID);
+		NBTTagCompound tag = stack.getSubCompound(Tags.MOD_ID);
 		if (tag != null && tag.hasKey("EnemiesKilled")) {
 			return tag.getInteger("EnemiesKilled");
 		}
@@ -118,7 +118,7 @@ public class FeatureSwordInfo {
 	}
 
 	public int getDamageDealt(ItemStack stack) {
-		NBTTagCompound tag = stack.getSubCompound(PickleTweaks.MOD_ID);
+		NBTTagCompound tag = stack.getSubCompound(Tags.MOD_ID);
 		if (tag != null && tag.hasKey("DamageDealt")) {
 			return tag.getInteger("DamageDealt");
 		}

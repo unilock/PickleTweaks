@@ -34,7 +34,7 @@ public class TweakBlockHarvest {
 			int meta;
 			int level;
 
-			String parts2[] = parts[1].split("-");
+			String[] parts2 = parts[1].split("-");
 			String lvl, tool = null;
 
 			if (parts2.length == 2) {
@@ -46,7 +46,7 @@ public class TweakBlockHarvest {
 
 			if (blockName.startsWith("ore:") && parts.length == 2) {
 				try {
-					level = Integer.valueOf(lvl);
+					level = Integer.parseInt(lvl);
 				} catch (NumberFormatException e) {
 					continue;
 				}
@@ -77,8 +77,8 @@ public class TweakBlockHarvest {
 			blockName = part[0] + ":" + part[1];
 
 			try {
-				meta = Integer.valueOf(part[2]);
-				level = Integer.valueOf(lvl);
+				meta = Integer.parseInt(part[2]);
+				level = Integer.parseInt(lvl);
 			} catch (NumberFormatException e) {
 				continue;
 			}

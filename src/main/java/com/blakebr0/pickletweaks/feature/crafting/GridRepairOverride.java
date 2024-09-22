@@ -61,17 +61,17 @@ public class GridRepairOverride {
 			if (matName.length == 3) {
 				int meta;
 				if (matName[2].contains("@")) {
-					String metaThings[] = matName[2].split("@");
+					String[] metaThings = matName[2].split("@");
 					try {
-						meta = Integer.valueOf(metaThings[0]);
-						multi = Double.valueOf(metaThings[1]);
+						meta = Integer.parseInt(metaThings[0]);
+						multi = Double.parseDouble(metaThings[1]);
 					} catch (NumberFormatException e) {
 						PickleTweaks.LOGGER.error("Invalid repair material syntax metadata and mutliplier: {}", value);
 						continue;
 					}
 				} else {
 					try {
-						meta = Integer.valueOf(matName[2]);
+						meta = Integer.parseInt(matName[2]);
 					} catch (NumberFormatException e) {
 						PickleTweaks.LOGGER.error("Invalid repair material syntax metadata: {}", value);
 						continue;
@@ -87,9 +87,9 @@ public class GridRepairOverride {
 				if (parts[1].startsWith("ore:")) {
 					ore = parts[1].substring(4);
 					if (ore.contains("@")) {
-						String metaParts[] = ore.split("@");
+						String[] metaParts = ore.split("@");
 						try {
-							multi = Double.valueOf(metaParts[1]);
+							multi = Double.parseDouble(metaParts[1]);
 						} catch (NumberFormatException e) {
 							PickleTweaks.LOGGER.error("Invalid repair material syntax mutliplier: {}", value);
 							continue;
@@ -127,7 +127,7 @@ public class GridRepairOverride {
 				} else if (entry.mat instanceof String) {
 					String ore = (String) entry.mat;
 					if (OreDictionary.doesOreNameExist(ore)) {
-						if (!OreDictionary.getOres(ore).stream().anyMatch(is -> is.getMetadata() == OreDictionary.WILDCARD_VALUE && is.getItem() == mat.getItem() || is.isItemEqual(mat))) {
+						if (OreDictionary.getOres(ore).stream().noneMatch(is -> is.getMetadata() == OreDictionary.WILDCARD_VALUE && is.getItem() == mat.getItem() || is.isItemEqual(mat))) {
 							continue;
 						}
 						return entry;

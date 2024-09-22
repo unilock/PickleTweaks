@@ -25,7 +25,7 @@ public class ItemNightvisionGoggles extends ItemArmor implements IEnableable {
 
 	public ItemNightvisionGoggles() {
 		super(MATERIAL, 0, EntityEquipmentSlot.HEAD);
-		this.setUnlocalizedName("pt.nightvision_goggles");
+		this.setRegistryName("pt.nightvision_goggles");
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setMaxStackSize(1);
 	}
@@ -42,7 +42,7 @@ public class ItemNightvisionGoggles extends ItemArmor implements IEnableable {
 
 	public static class Handler {
 
-		public static List<String> playersWithGoggles = new ArrayList<String>();
+		public static List<String> playersWithGoggles = new ArrayList<>();
 
 		public static String playerKey(EntityPlayer player) {
 			return player.getGameProfile().getName() + ":" + player.getEntityWorld().isRemote;
@@ -60,7 +60,7 @@ public class ItemNightvisionGoggles extends ItemArmor implements IEnableable {
 				EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 				String key = playerKey(player);
 
-				Boolean has = this.playerHasGoggles(player);
+				boolean has = playerHasGoggles(player);
 				if (playersWithGoggles.contains(key)) {
 					if (has) {
 						player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 246, 0, true, false));

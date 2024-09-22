@@ -1,6 +1,6 @@
 package com.blakebr0.pickletweaks.feature.reinforcement;
 
-import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.tweaks.TweakToolBreaking;
 
@@ -15,7 +15,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry.Impl;
 public class ReinforcementRecipe extends Impl<IRecipe> implements IRecipe {
 	
 	public ReinforcementRecipe() {
-		this.setRegistryName(PickleTweaks.MOD_ID, "reinforcement");
+		this.setRegistryName(Tags.MOD_ID, "reinforcement");
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class ReinforcementRecipe extends Impl<IRecipe> implements IRecipe {
 	public ItemStack getReinforcementOutput(InventoryCrafting inv) {
 		ItemStack tool = ItemStack.EMPTY;
 		boolean foundTool = false;
-		NonNullList<ItemStack> inputs = NonNullList.<ItemStack>create();
+		NonNullList<ItemStack> inputs = NonNullList.create();
 		for (int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack slotStack = inv.getStackInSlot(i);
 			
@@ -107,8 +107,8 @@ public class ReinforcementRecipe extends Impl<IRecipe> implements IRecipe {
 		return ItemStack.EMPTY;
 	}
 	
-	@Override
-	public boolean isHidden() {
-		return true;
-	}
+//	@Override
+//	public boolean isHidden() {
+//		return true;
+//	}
 }

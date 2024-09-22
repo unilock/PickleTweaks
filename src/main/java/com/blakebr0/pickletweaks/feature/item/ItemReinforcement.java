@@ -10,6 +10,7 @@ import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.config.ModConfig;
 import com.blakebr0.pickletweaks.feature.reinforcement.ReinforcementHandler;
 
@@ -23,7 +24,7 @@ public class ItemReinforcement extends ItemMeta implements IEnableable {
 	public static final String[] DEFAULT_VALUES = new String[] { "0=wood-6B511F-50", "1=stone-7F7F7F-100", "2=iron-C1C1C1-250", "3=gold-BCBF4D-350", "4=diamond-27B29A-500" };
 	public static final Map<Integer, Reinforcement> TYPES = new HashMap<>();
 	private Configuration config = ModConfig.instance.config;
-	
+
 	public ItemReinforcement() {
 		super("pt.reinforcement", PickleTweaks.REGISTRY);
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
@@ -64,9 +65,9 @@ public class ItemReinforcement extends ItemMeta implements IEnableable {
 			int reinforce;
 
 			try {
-				meta = Integer.valueOf(parts[0]);
+				meta = Integer.parseInt(parts[0]);
 				color = Integer.parseInt(info[1], 16);
-				reinforce = Integer.valueOf(info[2]);
+				reinforce = Integer.parseInt(info[2]);
 			} catch (NumberFormatException e) {
 				PickleTweaks.LOGGER.error("Invalid custom reinforcement syntax ints: " + value);
 				continue;
@@ -87,10 +88,10 @@ public class ItemReinforcement extends ItemMeta implements IEnableable {
 	@Override
 	public void initModels() {
 		if (TYPES.isEmpty()) {
-			ModelLoader.setCustomModelResourceLocation(this, 0, ResourceHelper.getModelResource(PickleTweaks.MOD_ID, "reinforcement", "inventory"));
+			ModelLoader.setCustomModelResourceLocation(this, 0, ResourceHelper.getModelResource(Tags.MOD_ID, "reinforcement", "inventory"));
 		} else {
 			for (Map.Entry<Integer, MetaItem> item : items.entrySet()) {
-				ModelLoader.setCustomModelResourceLocation(this, item.getKey(), ResourceHelper.getModelResource(PickleTweaks.MOD_ID, "reinforcement", "inventory"));
+				ModelLoader.setCustomModelResourceLocation(this, item.getKey(), ResourceHelper.getModelResource(Tags.MOD_ID, "reinforcement", "inventory"));
 			}
 		}
 	}

@@ -14,7 +14,7 @@ public class ItemModShears extends ItemShears implements IRepairMaterial {
 	
 	public ItemModShears(String name, ToolMaterial material) {
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
-		this.setUnlocalizedName("pt." + name);
+		this.setRegistryName("pt." + name);
 		this.setMaxDamage(material.getMaxUses());
 	}
 	

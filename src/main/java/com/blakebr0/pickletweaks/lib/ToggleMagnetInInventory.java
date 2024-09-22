@@ -1,6 +1,6 @@
 package com.blakebr0.pickletweaks.lib;
 
-import com.blakebr0.pickletweaks.PickleTweaks;
+import com.blakebr0.pickletweaks.Tags;
 import com.blakebr0.pickletweaks.feature.item.ItemMagnet;
 import com.blakebr0.pickletweaks.network.MessageToggleMagnet;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import org.lwjgl.input.Mouse;
 
-@Mod.EventBusSubscriber(modid = PickleTweaks.MOD_ID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = Tags.MOD_ID, value = Side.CLIENT)
 public class ToggleMagnetInInventory {
 
     @SubscribeEvent
