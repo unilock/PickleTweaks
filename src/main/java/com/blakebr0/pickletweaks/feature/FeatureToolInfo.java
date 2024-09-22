@@ -58,7 +58,7 @@ public class FeatureToolInfo {
 
 	@SubscribeEvent
 	public void onBlockBroken(BreakEvent event) {
-		if (!ModConfig.confToolInfoTooltip) {
+		if (!ModConfig.confToolInfoTooltip || !ModConfig.confModifyNbt) {
 			return;
 		}
 		
@@ -99,7 +99,9 @@ public class FeatureToolInfo {
 							+ getMiningLevelName(stack, toolClass));
 					tooltip.add(Utils.localize("tooltip.pt.mining_speed") + " " + Colors.WHITE + getMiningSpeed(tool));
 					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + Colors.WHITE + getDurability(stack));
-					tooltip.add(Utils.localize("tooltip.pt.blocks_broken") + " " + Colors.WHITE + getBlocksBroken(stack));
+					if (ModConfig.confModifyNbt) {
+						tooltip.add(Utils.localize("tooltip.pt.blocks_broken") + " " + Colors.WHITE + getBlocksBroken(stack));
+					}
 				} else {
 					tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
 				}

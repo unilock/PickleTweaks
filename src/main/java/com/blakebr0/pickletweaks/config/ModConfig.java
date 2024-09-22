@@ -44,6 +44,7 @@ public class ModConfig {
 	public static boolean confModSupportPaxels;
 	public static boolean confFlintTools;
 
+	public static boolean confModifyNbt;
 	public static boolean confToolInfoTooltip;
 	public static boolean confSwordInfoTooltip;
 	public static boolean confHoeInfoTooltip;
@@ -113,6 +114,8 @@ public class ModConfig {
 		confMortarAndPestle = config.getBoolean("mortar_and_pestle", category, true, "Should the Mortar And Pestle be enabled?");
 		confFlintTools = config.getBoolean("flint_tools", category, true, "Should the Flint Tools be enabled?");
 
+		confModifyNbt = config.getBoolean("modify_nbt", category, true, "Should the item information tooltips modify NBT?" +
+				"\n(used to keep track of statistics: Blocks Broken, Blocks Tilled, Damage Dealt, Enemies Killed)");
 		confToolInfoTooltip = config.getBoolean("tool_info_tooltip", category, true, "Should the tool information tooltips be enabled?");
 		confSwordInfoTooltip = config.getBoolean("sword_info_tooltip", category, true, "Should the sword information tooltips be enabled?");
 		confHoeInfoTooltip = config.getBoolean("hoe_info_tooltip", category, true, "Should the hoe information tooltips be enabled?");

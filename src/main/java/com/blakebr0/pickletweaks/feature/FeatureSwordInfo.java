@@ -27,7 +27,7 @@ public class FeatureSwordInfo {
 
 	@SubscribeEvent
 	public void onEntityKilled(LivingDeathEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) {
+		if (!ModConfig.confSwordInfoTooltip || !ModConfig.confModifyNbt) {
 			return;
 		}
 
@@ -46,7 +46,7 @@ public class FeatureSwordInfo {
 
 	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
-		if (!ModConfig.confSwordInfoTooltip) {
+		if (!ModConfig.confSwordInfoTooltip || !ModConfig.confModifyNbt) {
 			return;
 		}
 
@@ -89,8 +89,10 @@ public class FeatureSwordInfo {
 				tooltip.next();
 				if (shift) {
 					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + Colors.WHITE + getDurability(stack));
-					tooltip.add(Utils.localize("tooltip.pt.enemies_killed") + " " + Colors.WHITE + getEnemiesKilled(stack));
-					tooltip.add(Utils.localize("tooltip.pt.damage_dealt") + " " + Colors.WHITE + getDamageDealt(stack));
+					if (ModConfig.confModifyNbt) {
+						tooltip.add(Utils.localize("tooltip.pt.enemies_killed") + " " + Colors.WHITE + getEnemiesKilled(stack));
+						tooltip.add(Utils.localize("tooltip.pt.damage_dealt") + " " + Colors.WHITE + getDamageDealt(stack));
+					}
 				} else {
 					tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
 				}

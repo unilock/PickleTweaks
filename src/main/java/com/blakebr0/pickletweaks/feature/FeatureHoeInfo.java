@@ -25,7 +25,7 @@ public class FeatureHoeInfo {
 
 	@SubscribeEvent
 	public void onRightClickBlock(UseHoeEvent event) {
-		if (!ModConfig.confHoeInfoTooltip) {
+		if (!ModConfig.confHoeInfoTooltip || !ModConfig.confModifyNbt) {
 			return;
 		}
 		
@@ -59,7 +59,9 @@ public class FeatureHoeInfo {
 				tooltip.next();
 				if (shift) {
 					tooltip.add(Utils.localize("tooltip.pt.durability") + " " + Colors.WHITE + getDurability(stack));
-					tooltip.add(Utils.localize("tooltip.pt.blocks_tilled") + " " + Colors.WHITE + getBlocksTilled(stack));
+					if (ModConfig.confModifyNbt) {
+						tooltip.add(Utils.localize("tooltip.pt.blocks_tilled") + " " + Colors.WHITE + getBlocksTilled(stack));
+					}
 				} else {
 					tooltip.add(Utils.localize("tooltip.pt.hold_shift_for_info"));
 				}
