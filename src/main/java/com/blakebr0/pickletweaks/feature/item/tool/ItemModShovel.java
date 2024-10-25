@@ -14,7 +14,7 @@ public class ItemModShovel extends ItemSpade implements IRepairMaterial {
 
 	public ItemModShovel(String name, ToolMaterial material) {
 		super(material);
-		this.setRegistryName("pt." + name);
+		this.setTranslationKey("pt." + name);
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 	

@@ -14,7 +14,7 @@ public class ItemModPickaxe extends ItemPickaxe implements IRepairMaterial {
 	
 	public ItemModPickaxe(String name, ToolMaterial material) {
 		super(material);
-		this.setRegistryName("pt." + name);
+		this.setTranslationKey("pt." + name);
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 	}
 	

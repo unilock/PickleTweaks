@@ -16,7 +16,7 @@ public class BlockDarkGlass extends BlockBreakable implements IEnableable {
 
 	public BlockDarkGlass() {
 		super(Material.GLASS, false);
-		this.setRegistryName("pt.dark_glass");
+		this.setTranslationKey("pt.dark_glass");
 		this.setCreativeTab(PickleTweaks.CREATIVE_TAB);
 		this.setSoundType(SoundType.GLASS);
 		this.setHardness(1.0F);
